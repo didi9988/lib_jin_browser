@@ -1,16 +1,20 @@
 # lib_jin_browser
 
 This library is based on JinTalk Browser
+
 https://play.google.com/store/apps/details?id=com.won.android.app.jin
 
 Step 1. Add the JitPack repository to your build file 
+
 Add it in your root build.gradle at the end of repositories:
 
 allprojects {
+
 	repositories {
 		...
 		maven { url 'https://jitpack.io' }
 	}
+
 }
 
 
@@ -18,19 +22,30 @@ allprojects {
 Step 2. Add the dependency
 
 dependencies {
+
 	implementation 'com.github.didi9988:lib_jin_browser:Tag'
+
 }
 
 
 Step 3. Make MainActivity
 
+package com.your.package;
+
 import android.content.Context;
+
 import android.content.Intent;
+
 import android.net.Uri;
+
 import android.os.Bundle;
+
 import com.jin.browser.activity.JinActivity;
+
 import com.jin.browser.activity.util.JinPreferenceUtil;
+
 import com.jin.browser.webview.JinWebView;
+
 
 public class MainActivity extends JinActivity {
 
@@ -100,5 +115,8 @@ public class MainActivity extends JinActivity {
             intent.setData(null);
             intent.setFlags(0);
         }
+
     }
+
 }
+
