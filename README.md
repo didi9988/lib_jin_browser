@@ -1,5 +1,7 @@
 # lib_jin_browser
 
+This library is based on JinTalk Browser
+https://play.google.com/store/apps/details?id=com.won.android.app.jin
 
 Step 1. Add the JitPack repository to your build file 
 Add it in your root build.gradle at the end of repositories:
@@ -26,7 +28,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.jin.browser.activity.JinActivity;
 import com.jin.browser.activity.util.JinPreferenceUtil;
 import com.jin.browser.webview.JinWebView;
