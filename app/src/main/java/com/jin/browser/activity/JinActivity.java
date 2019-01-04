@@ -150,7 +150,9 @@ public abstract class JinActivity extends AppCompatActivity implements View.OnKe
         webview_swipe_layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                getTopWebview().reload();
+                if(getTopWebview() != null) {
+                    getTopWebview().reload();
+                }
                 webview_swipe_layout.setRefreshing(false);
             }
         });
@@ -158,11 +160,12 @@ public abstract class JinActivity extends AppCompatActivity implements View.OnKe
         webview_swipe_layout.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
             public void onScrollChanged() {
-                if(getTopWebview().getScrollY() == 0){
-                    webview_swipe_layout.setEnabled(true);
-                }
-                else{
-                    webview_swipe_layout.setEnabled(false);
+                if(getTopWebview() != null) {
+                    if (getTopWebview().getScrollY() == 0) {
+                        webview_swipe_layout.setEnabled(true);
+                    } else {
+                        webview_swipe_layout.setEnabled(false);
+                    }
                 }
             }
         });
