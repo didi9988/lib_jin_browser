@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/content_webview_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/webview_swipe_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <FrameLayout
+                android:id="@+id/webview_frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:clipChildren="true"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top">
+
+            <FrameLayout
+                android:id="@+id/jin_search_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="?android:attr/actionBarItemBackground"
+                android:clickable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" >
+
+                    <FrameLayout
+                        android:layout_width="45dp"
+                        android:layout_height="?android:attr/actionBarSize"
+                        android:background="?android:attr/actionBarItemBackground"
+                        android:id="@+id/tab_img_layout"
+                        android:gravity="center" >
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/tab_img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="?android:attr/actionBarSize"
+                        android:background="?android:attr/actionBarItemBackground"
+                        android:clickable="true"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        android:gravity="center|center_vertical" >
+
+                        <LinearLayout
+                            android:id="@+id/search_bar_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/edittext_border"
+                            android:paddingLeft="2dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="1" >
+
+                            <FrameLayout
+                                android:id="@+id/layout_ssl"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="left|center_vertical"
+                                android:padding="5dp">
+
+                                <ImageView
+                                    android:id="@+id/ic_ssl"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center|center_vertical"
+                                    android:background="@drawable/ic_green_rect_no_border"
+                                    android:src="@drawable/ic_lock_outline" />
+                            </FrameLayout>
+
+                            <EditText
+                                android:id="@+id/search_edit_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="left|center_vertical"
+                                android:inputType="textUri"
+                                android:paddingBottom="1dp"
+                                android:paddingLeft="2dp"
+                                android:hint="Search"
+                                android:paddingRight="5dp"
+                                android:paddingTop="1dp"
+                                android:background="@android:color/transparent"
+                                android:selectAllOnFocus="true"
+                                android:singleLine="true" />
+
+                            <FrameLayout
+                                android:id="@+id/search_reload_layout"
+                                android:layout_width="32dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:padding="5dp">
+
+                                <ImageView
+                                    android:id="@+id/search_reload_img"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/ic_go_search_api_holo_light" />
+                            </FrameLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <FrameLayout
+                        android:layout_width="40dp"
+                        android:layout_height="?android:attr/actionBarSize"
+                        android:background="?android:attr/actionBarItemBackground"
+                        android:padding="6dp"
+                        android:id="@+id/setting_more_layout">
+                        <ImageView
+                            android:id="@+id/setting_more_view"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/perm_group_system_tools"/>
+                    </FrameLayout>
+
+
+
+
+
+                </LinearLayout>
+
+
+                <!--
+                <ProgressBar android:id="@+id/search_progress"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:progressTint="@android:color/holo_orange_light"
+                    android:layout_width="match_parent" android:layout_height="5dp"
+                    android:layout_gravity="bottom" android:max="100" />
+                -->
+            </FrameLayout>
+
+
+            <ProgressBar android:id="@+id/search_progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:progressTint="#a4a0c6"
+                android:layout_width="match_parent"
+                android:layout_height="2.5dp"
+                android:layout_gravity="bottom"
+                android:max="100" />
+
+        </FrameLayout>
+
+        <ListView
+            android:id="@+id/history_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="?android:attr/actionBarSize"
+            android:background="@drawable/edittext_border"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="#CCCCCC"
+            android:dividerHeight="1dp"
+            android:paddingLeft="2dp" />
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.7"
+                android:background="@android:color/holo_orange_dark"/>
+            <LinearLayout
+                android:id="@+id/bottom_menu_bar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="?android:attr/actionBarItemBackground"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:layout_gravity="bottom">
+                <FrameLayout
+                    android:id="@+id/webview_go_back_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true">
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@android:color/transparent"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_menu_back_dark" />
+                </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/webview_go_forward_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:clickable="true">
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@android:color/transparent"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_menu_forward_dark" />
+                </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/webview_go_home_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:clickable="true">
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@android:color/transparent"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_menu_home_dark" />
+                </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/webview_search_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:clickable="true">
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_menu_search" />
+                </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/webview_block_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:clickable="true">
+                    <ImageView
+                        android:id="@+id/webview_block_img_view"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_menu_block" />
+                </FrameLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+    </FrameLayout>
+
+
+
+    <ImageView
+        android:id="@+id/webview_video_full_screen_btn"
+        android:layout_gravity="top|right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:src="@drawable/ic_menu_always_landscape_portrait"/>
+
+
+</FrameLayout>
