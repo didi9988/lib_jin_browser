@@ -18,15 +18,15 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <!--
-    <include
-        layout="@layout/app_bar_main"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/webview_swipe_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-    -->
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
+        <include layout="@layout/jin_include_main_browser" />
 
-    <include layout="@layout/jin_include_main_browser" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 
     <android.support.design.widget.NavigationView
