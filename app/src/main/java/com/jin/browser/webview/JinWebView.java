@@ -72,6 +72,7 @@ public class JinWebView extends WebView {
     private float touchDownPointX;
     private float touchDownPointY;
     private boolean isScrollDown;
+    private boolean isActiveSwipeRefesh=false;
 
     private boolean mPrivacy = false;
 
@@ -189,6 +190,15 @@ public class JinWebView extends WebView {
 
 
     public void initWebView(){
+
+        this.setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if(hasFocus){
+                    jinActivity.setActiveSwipe(isActiveSwipeRefesh);
+                }
+            }
+        });
 
         this.setDrawingCacheBackgroundColor(Color.WHITE);
         this.setFocusableInTouchMode(true);
@@ -732,103 +742,46 @@ public class JinWebView extends WebView {
                 }
                 else{
                     isScrollDown = false;
+                    isActiveSwipeRefesh = false;
+                    jinActivity.setActiveSwipe(false);
                 }
             }
-
-
-            /*
-            if (mAction == MotionEvent.ACTION_DOWN) {
-                if (!view.hasFocus()) {
-                    view.requestFocus();
-                }
-
-                touchDownPointX = arg1.getX();
-                touchDownPointY = arg1.getY();
-            }
-            else if(mAction == MotionEvent.ACTION_UP){
-                if( isReachTopScroll){
-                    mMainActivity.setActionView(false, false);
-                }
-            }
-
-            else if(mAction == MotionEvent.ACTION_MOVE){
-                final float distance = touchDownPointY-arg1.getY();
-
-                if(distance > dpToPx(10) ){
-                    if (view.getScrollY() == 0) {
-                        mMainActivity.setActionView(false, false);
-                    }
-                }
-            }
-            */
-
-            /*
-            mAction = arg1.getAction();
-            mY = arg1.getY();
-            if (mAction == MotionEvent.ACTION_DOWN) {
-                mLocation = mY;
-
-                touchDownPointX = arg1.getX();
-                touchDownPointY = arg1.getY();
-            } else if (mAction == MotionEvent.ACTION_UP) {
-                final float distance = (mY - mLocation);
-                if (distance > dpToPx(10) && view.getScrollY() < dpToPx(10)) {
-                    //mUIController.showActionBar();
-                    mMainActivity.setActionView(false, false);
-                } else if (distance < -dpToPx(10)) {
-                    //mUIController.hideActionBar();
-                    mMainActivity.setActionView(true, false);
-                }
-                mLocation = 0;
-            }
-            */
 
             mGestureDetector.onTouchEvent(arg1);
             return false;
         }
     }
 
-
     @Override
-    protected void onScrollChanged(int l, int t, int oldl, int oldt) {
-
-
-        if(getTop()==t){
+    protected void onScrollChanged(int newLeft, int newTop, int oldLeft, int oldTop) {
+        if(getTop()==newTop){
+            //if(newTop == 0){
             // reaches the top end
             this.isReachTopScroll = true;
         }
         else{
             this.isReachTopScroll = false;
         }
-
-        super.onScrollChanged(l, t, oldl, oldt);
+        super.onScrollChanged(newLeft, newTop, oldLeft, oldTop);
     }
 
 
     @Override
     protected void onOverScrolled(int scrollX, int scrollY, boolean clampedX, boolean clampedY) {
-        // Treat animating scrolls differently; see #computeScroll() for why.
-        /*
-        if(clampedY && this.isReachTopScroll){
-            //mMainActivity.setActionView(false, false);
-            if(mAction == MotionEvent.ACTION_UP && isScrollDown){
-                mMainActivity.setActionView(false, false);
-            }
-        }
-        */
-
-
-        /*
         if(clampedY){
-            if(mAction == MotionEvent.ACTION_UP && isScrollDown){
-                mMainActivity.setActionView(false, false);
+            if(isScrollDown && scrollY==0){
+                isActiveSwipeRefesh = true;
+                jinActivity.setActiveSwipe(true);
+            }
+            else{//bottom
+
             }
         }
-        */
-
 
         super.onOverScrolled(scrollX, scrollY,clampedX,clampedY);
+        //requestDisallowInterceptTouchEvent(true);
     }
+
 
 
 

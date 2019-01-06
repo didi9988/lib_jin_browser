@@ -157,6 +157,7 @@ public abstract class JinActivity extends AppCompatActivity implements View.OnKe
             }
         });
 
+        /*
         webview_swipe_layout.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
             public void onScrollChanged() {
@@ -169,6 +170,7 @@ public abstract class JinActivity extends AppCompatActivity implements View.OnKe
                 }
             }
         });
+        */
 
 
 
@@ -273,6 +275,10 @@ public abstract class JinActivity extends AppCompatActivity implements View.OnKe
                 }
             }
         });
+    }
+
+    public void setActiveSwipe(boolean active){
+        webview_swipe_layout.setEnabled(active);
     }
 
     public void addBookmark(JinWebView webview, final boolean toast){
